@@ -1,0 +1,25 @@
+Array
+(
+    [data] => http://localhost/security/16/link1.html
+)
+
+Array
+(
+    [data] => http://localhost/security/16/link2.html
+)
+
+Array
+(
+    [data] => http://localhost/security/16/link3.html
+)
+
+Array
+(
+    [data] => http://localhost/security/16/index.html
+)
+
+Array
+(
+    [data] => submit_url=0&pass=asdasd&go=Send
+)
+
